@@ -1,0 +1,198 @@
+body {
+  background-image: url("Background.png");
+  background-repeat: no-repeat;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  height: 800px;
+  width: 1280px;
+}
+body #menu {
+  position: absolute;
+  top: 0px;
+}
+body #menu.active {
+  left: 230px;
+}
+body #menu.active #sidebar-wrapper {
+  left: 230px;
+  transition: all 0.4s ease 0s;
+  width: 230px;
+}
+body #sidebar-wrapper {
+  background-image: url("Menu.png");
+  background-repeat: no-repeat;
+  box-shadow: 5px 0px 20px #000;
+  height: 100%;
+  left: 0px;
+  margin-left: -230px;
+  position: fixed;
+  transition: all 0.4s ease 0s;
+  width: 230px;
+  z-index: 1000;
+}
+body #sidebar-wrapper .sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 230px;
+}
+body #sidebar-wrapper .sidebar-nav ul li {
+  font-size: 18px;
+  line-height: 40px;
+  margin-left: -40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+body #sidebar-wrapper .sidebar-nav ul li a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+body #sidebar-wrapper .sidebar-nav ul li a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+body #sidebar-wrapper .sidebar-nav>.sidebar-brand {
+  height: 50px;
+  position: relative;
+}
+body #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon {
+  height: 50px;
+  width: 50px;
+  border-right: 2px solid #e3b74d;
+  position: absolute;
+}
+body #sidebar-wrapper .sidebar-nav>.sidebar-brand .owner-name {
+  position: absolute;
+  left: 55px;
+  margin: 0px;
+  bottom: 0px;
+  font-size: 18px;
+}
+body .menu-toggle {
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  text-decoration: none;
+  text-shadow: 0px 3px 5px #000;
+  text-transform: uppercase;
+}
+body .menu-toggle.uno {
+  font-size: 20px;
+  left: 54px;
+  top: 15px;
+}
+body .menu-toggle.dos {
+  font-size: 15px;
+  right: 7px;
+}
+body .game-info {
+  bottom: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  left: 135px;
+  margin: 0px;
+  position: absolute;
+}
+body .seccion {
+  display: table;
+  height: 345px;
+  margin-bottom: 4px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+body .seccion.arriba {
+  margin-top: 60px;
+}
+body .seccion .team {
+  display: table-cell;
+  vertical-align: middle;
+}
+body .seccion .team .summoner {
+  display: inline-block;
+  height: 270px;
+  margin-right: 35px;
+  width: 133px;
+}
+body .seccion .team .summoner .champart-container {
+  height: 243px;
+  width: 133px;
+  background-color: #000;
+  box-shadow: 0px 5px 10px #000;
+  position: relative;
+}
+body .seccion .team .summoner .champart-container .champart {
+  height: 243px;
+  width: 133px;
+}
+body .seccion .team .summoner .champart-container .champart.azul {
+  box-shadow: 0px 0px 10px #084b59;
+}
+body .seccion .team .summoner .champart-container .champart.rojo {
+  box-shadow: 0px 0px 10px #900;
+}
+body .seccion .team .summoner .champart-container .cortina {
+  background-color: #000;
+  height: 243px;
+  left: 0px;
+  opacity: 0.4;
+  position: absolute;
+  top: 0px;
+  width: 133px;
+}
+body .seccion .team .summoner .champart-container .tier {
+  height: 30px;
+  left: 2px;
+  position: absolute;
+  top: 2px;
+  width: 30px;
+}
+body .seccion .team .summoner .champart-container .tier-number {
+  font-size: 13px;
+  left: 32px;
+  margin: 0px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 10px;
+}
+body .seccion .team .summoner .champart-container .spell {
+  border: 1px solid #990;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+body .seccion .team .summoner .champart-container .spell.uno {
+  bottom: 10px;
+  left: 10px;
+}
+body .seccion .team .summoner .champart-container .spell.dos {
+  bottom: 10px;
+  left: 46px;
+}
+body .seccion .team .summoner .summoner-name {
+  font-size: 15px;
+  margin: 5px 0px 0px 0px;
+  text-shadow: 0px 3px 5px #000;
+}
+body .seccion .bans-panel {
+  position: absolute;
+  right: 170px;
+  text-align: center;
+  top: 42px;
+  width: 60px;
+}
+body .seccion .bans-panel .ban-tittle {
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+body .seccion .bans-panel .ban {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  height: 50px;
+  margin-bottom: 5px;
+  width: 50px;
+  -webkit-filter: grayscale(80%);
+}

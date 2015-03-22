@@ -1,0 +1,304 @@
+// Colores
+BordeChampionRojo = #990000;
+BordeChampionAzul = #084b59;
+BordeSpells = #999900;
+BordeBans = #1c93ae;
+Boxes = #E3B74D;
+
+html
+	overflow-y auto
+
+body
+	background-image url('AppDesign/Background.png')
+	background-repeat: no-repeat
+	color: white
+	font-family: 'Lato', sans-serif
+	width: 1280px
+		
+	.separador
+		position: absolute
+		top: 340px
+		
+	.esquina
+		bottom: -4px
+		position: absolute
+		
+		&.izquierda
+			background-image: url('AppDesign/EsquinaIzquierda.png')
+			background-repeat: no-repeat
+			height: 142px
+			left: 0px
+			pointer-events: none;
+			width: 142px
+			
+		&.derecha
+			background-image: url('AppDesign/EsquinaDerecha.png')
+			background-repeat: no-repeat
+			height: 104px
+			pointer-events: none;
+			right: 0px
+			width: 108px
+	
+	#despliegue-busqueda
+		position absolute
+		bottom: -8px
+		right: -490px
+		transition all 1s ease 0s
+		
+		&.active
+			right: -31px
+			transition all 1s ease 0s
+
+		.busqueda
+			background-image url('AppDesign/Busqueda.png')
+			background-repeat no-repeat
+			height: 61px
+			position: relative
+			width: 599px
+			
+			.desplegar-busqueda
+				background-image url('AppDesign/BotonExpansion.png')
+				background-repeat no-repeat
+				display: inline-block
+				height: 36px
+				left: 12px
+				position: absolute
+				top: 9px
+				transition all 1s ease 0s
+				width: 34px
+					
+				&.invertir
+					-webkit-transform: scaleX(-1)
+					
+			.campos-busqueda
+				background-image url('AppDesign/CampoBusqueda.png')
+				background-repeat no-repeat
+				display: inline-block
+				height: 32px
+				left: 60px
+				position absolute
+				top: 9px
+				width: 321px
+				
+				.summoner-name-input
+					background transparent
+					border none
+					font-size 15px
+					left 70px
+					line-height 23px
+					outline: none
+					position: absolute
+					top 4px
+					width 210px
+					
+			.boton-busqueda
+				background url('AppDesign/SearchButton.png')
+				background-repeat no-repeat
+				border: none
+				display: inline-block
+				height: 36px
+				left: 380px
+				outline: none
+				position absolute
+				top: 9px
+				width: 137px
+	
+	#menu
+		position: absolute
+		top: 0px
+		
+		&.active
+			left 230px
+
+			#sidebar-wrapper
+				left 230px
+				transition all 0.4s ease 0s
+				width 230px
+
+	#sidebar-wrapper
+		background-image: url('AppDesign/Menu.png')
+		background-repeat: no-repeat
+		box-shadow: 5px 0px 20px black
+		height 100%
+		left 0px
+		margin-left -230px
+		position fixed
+		transition all 0.4s ease 0s
+		width 230px
+		z-index 1000
+
+		.sidebar-nav
+			list-style none
+			margin 0
+			padding 0
+			position absolute
+			width 230px
+		
+			ul
+				
+				li
+					font-size 18px
+					line-height 40px
+					margin-left -40px
+					text-align center
+					text-transform uppercase
+
+					a
+						color: white
+						display: block
+						text-decoration: none
+
+						&:hover
+							background-color rgba(255,255,255,0.2)
+
+			&>.sidebar-brand
+				height 50px
+				position relative
+				
+				.summoner-icon
+					height: 50px
+					width: 50px
+					border-right: 2px solid Boxes
+					position: absolute
+					
+				.owner-name
+					position: absolute
+					left: 55px
+					margin: 0px
+					bottom: 0px
+					font-size: 18px
+	
+	.menu-toggle
+		color: white
+		font-weight: bold
+		position: absolute
+		text-decoration: none
+		text-shadow: 0px 3px 5px black
+		text-transform: uppercase
+		
+		&.uno
+			font-size: 20px
+			left: 54px
+			top: 15px
+		
+		&.dos
+			font-size: 15px
+			right: 7px
+		
+	.game-info
+		bottom: 0px
+		font-size: 20px
+		font-weight: bold
+		left: 135px
+		margin: 0px
+		position: absolute
+	
+	.seccion
+		display: table
+		margin-bottom: 4px
+		position: relative
+		text-align: center
+		width: 100%
+		
+		&.arriba
+			height: 345px
+			margin-top: 60px
+			
+		&.abajo
+			height: 387px
+		
+		.team
+			display: table-cell
+			vertical-align: middle
+				
+			.summoner
+				display: inline-block
+				height: 270px
+				margin-right: 35px
+				width: 133px
+				
+				.champart-container
+					height: 243px
+					width: 133px
+					background-color: black
+					box-shadow: 0px 5px 10px black
+					position: relative
+					
+					.champart
+						height: 243px
+						width: 133px
+						
+						&.azul
+							box-shadow: 0px 0px 10px BordeChampionAzul
+							
+						&.rojo
+							box-shadow: 0px 0px 10px BordeChampionRojo
+							
+					.cortina
+						background-color: black
+						height: 243px
+						left: 0px
+						opacity: 0.4
+						position: absolute
+						top: 0px
+						width: 133px
+
+					.tier
+						height: 30px
+						left: 2px
+						position: absolute
+						top: 2px
+						width: 30px
+						
+					.tier-number
+						font-size: 13px
+						left: 32px
+						margin: 0px
+						position: absolute
+						text-transform: uppercase
+						top: 10px
+						
+					.spell
+						border: 1px solid BordeSpells
+						height: 30px
+						position: absolute
+						width: 30px
+						
+						&.uno
+							bottom: 10px
+							left: 10px
+							
+						&.dos
+							bottom: 10px
+							left: 46px
+
+				.summoner-name
+					font-size: 15px
+					margin: 5px 0px 0px 0px
+					text-shadow: 0px 3px 5px black
+					
+		.bans-panel
+			position: absolute
+			right: 170px
+			text-align: center
+			width: 60px
+			
+			&.arriba
+				top: 42px
+				
+			&.abajo
+				top: 62px
+			
+			.ban-tittle
+				font-weight: bold
+				margin-bottom: 5px
+				text-align: center
+				text-transform: uppercase
+			
+			.ban
+				border-radius: 50%
+				border: 2px solid white
+				height: 50px
+				margin-bottom: 5px
+				width: 50px
+				-webkit-filter: grayscale(80%)

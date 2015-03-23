@@ -7,10 +7,15 @@
     "16": "icon16.png",
     "128": "icon128.png"
   },
+  "permissions": [
+  "storage",
+  "http://ddragon.leagueoflegends.com/",
+  "https://lan.api.pvp.net/",
+  "http://fonts.googleapis.com/"
+  ],
   "app": {
     "background": {
       "scripts": ["main.js"]
     }
-  },
-  "permissions": ["storage"]
+  }
 }

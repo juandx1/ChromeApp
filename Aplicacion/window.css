@@ -6,14 +6,11 @@ body {
   background-repeat: no-repeat;
   color: #fff;
   font-family: 'Lato', sans-serif;
+  padding-top: 1px;
   width: 1280px;
 }
-body .separador {
-  position: absolute;
-  top: 340px;
-}
 body .esquina {
-  bottom: -4px;
+  bottom: 0px;
   position: absolute;
 }
 body .esquina.izquierda {
@@ -31,70 +28,68 @@ body .esquina.derecha {
   pointer-events: none;
   right: 0px;
   width: 108px;
+  z-index: 500;
 }
-body #despliegue-busqueda {
+body .startDiv {
+  width: 1280px;
+  text-align: center;
+}
+body .startDiv.ocultar {
   position: absolute;
-  bottom: -8px;
-  right: -490px;
-  transition: all 1s ease 0s;
+  visibility: hidden;
 }
-body #despliegue-busqueda.active {
-  right: -31px;
-  transition: all 1s ease 0s;
+body .startDiv .startImage {
+  background-image: url("AppDesign/StartImage.png");
+  border-radius: 50%;
+  height: 300px;
+  margin: 80px auto 40px auto;
+  width: 300px;
+  -webkit-animation-name: breathing;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
 }
-body #despliegue-busqueda .busqueda {
-  background-image: url("AppDesign/Busqueda.png");
-  background-repeat: no-repeat;
-  height: 61px;
-  position: relative;
-  width: 599px;
+body .startDiv .startText {
+  font-size: 30px;
+  text-shadow: 0px 5px 5px #000;
+  text-transform: uppercase;
 }
-body #despliegue-busqueda .busqueda .desplegar-busqueda {
-  background-image: url("AppDesign/BotonExpansion.png");
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 36px;
-  left: 12px;
-  position: absolute;
-  top: 9px;
-  transition: all 1s ease 0s;
-  width: 34px;
-}
-body #despliegue-busqueda .busqueda .desplegar-busqueda.invertir {
-  -webkit-transform: scaleX(-1);
-}
-body #despliegue-busqueda .busqueda .campos-busqueda {
-  background-image: url("AppDesign/CampoBusqueda.png");
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 32px;
-  left: 60px;
-  position: absolute;
-  top: 9px;
-  width: 321px;
-}
-body #despliegue-busqueda .busqueda .campos-busqueda .summoner-name-input {
+body .startDiv .startInputSumName {
   background: transparent;
   border: none;
-  font-size: 15px;
-  left: 70px;
-  line-height: 23px;
+  border-bottom: 2px solid #fff;
+  font-size: 25px;
   outline: none;
-  position: absolute;
-  top: 4px;
-  width: 210px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 400px;
 }
-body #despliegue-busqueda .busqueda .boton-busqueda {
-  background: url("AppDesign/SearchButton.png");
-  background-repeat: no-repeat;
-  border: none;
-  display: inline-block;
-  height: 36px;
-  left: 380px;
+body .startDiv .startInputSumName::-webkit-input-placeholder {
+  text-align: center;
+  text-shadow: 0px 3px 1px #000;
+}
+body .startDiv .startButtonDiv {
+  height: 90px;
+}
+body .startDiv .startButtonDiv .startButton {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0px 3px 5px #000;
+  font-size: 20px;
+  height: 60px;
+  margin-top: 20px;
   outline: none;
-  position: absolute;
-  top: 9px;
-  width: 137px;
+  text-transform: uppercase;
+  width: 60px;
+  transition: box-shadow 0.4s ease 0s;
+}
+body .startDiv .startButtonDiv .startButton:hover {
+  border: 2px solid #1c93ae;
+  box-shadow: 0px 0px 20px #084b59;
+  color: #1c93ae;
+}
+body .startDiv #informationText {
+  font-size: 15px;
 }
 body #menu {
   position: absolute;
@@ -152,12 +147,22 @@ body #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon {
   border-right: 2px solid #e3b74d;
   position: absolute;
 }
+body #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon.not-logged {
+  -webkit-filter: grayscale(100%);
+}
 body #sidebar-wrapper .sidebar-nav>.sidebar-brand .owner-name {
   position: absolute;
   left: 55px;
   margin: 0px;
   bottom: 0px;
   font-size: 18px;
+}
+body #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
+  position: absolute;
+  left: 55px;
+  margin: 0px;
+  top: 0px;
+  font-size: 13px;
 }
 body .menu-toggle {
   color: #fff;
@@ -176,7 +181,18 @@ body .menu-toggle.dos {
   font-size: 15px;
   right: 7px;
 }
-body .game-info {
+body .currentMatch {
+  height: 100%;
+}
+body .currentMatch.ocultar {
+  position: absolute;
+  visibility: hidden;
+}
+body .currentMatch .separador {
+  position: absolute;
+  top: 330px;
+}
+body .currentMatch .game-info {
   bottom: 0px;
   font-size: 20px;
   font-weight: bold;
@@ -184,48 +200,118 @@ body .game-info {
   margin: 0px;
   position: absolute;
 }
-body .seccion {
-  display: table;
-  margin-bottom: 4px;
+body .currentMatch #despliegue-busqueda {
+  position: absolute;
+  bottom: 0px;
+  right: -490px;
+  transition: all 1s ease 0s;
+}
+body .currentMatch #despliegue-busqueda.active {
+  right: -31px;
+  transition: all 1s ease 0s;
+}
+body .currentMatch #despliegue-busqueda .busqueda {
+  background-image: url("AppDesign/Busqueda.png");
+  background-repeat: no-repeat;
+  height: 57px;
+  position: relative;
+  width: 599px;
+}
+body .currentMatch #despliegue-busqueda .busqueda .desplegar-busqueda {
+  background-image: url("AppDesign/BotonExpansion.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 36px;
+  left: 12px;
+  position: absolute;
+  top: 9px;
+  transition: -webkit-transform 1s ease 0s;
+  width: 34px;
+}
+body .currentMatch #despliegue-busqueda .busqueda .desplegar-busqueda.invertir {
+  -webkit-transform: scaleX(-1);
+}
+body .currentMatch #despliegue-busqueda .busqueda .desplegar-busqueda:hover {
+  background-image: url("AppDesign/BotonExpansion_Hover.png");
+}
+body .currentMatch #despliegue-busqueda .busqueda .campos-busqueda {
+  background-image: url("AppDesign/CampoBusqueda.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 32px;
+  left: 60px;
+  position: absolute;
+  top: 9px;
+  width: 321px;
+}
+body .currentMatch #despliegue-busqueda .busqueda .campos-busqueda .summoner-name-input {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  left: 70px;
+  line-height: 23px;
+  outline: none;
+  position: absolute;
+  top: 4px;
+  width: 210px;
+}
+body .currentMatch #despliegue-busqueda .busqueda .boton-busqueda {
+  background: url("AppDesign/SearchButton.png");
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  height: 36px;
+  left: 380px;
+  outline: none;
+  position: absolute;
+  top: 9px;
+  width: 137px;
+}
+body .currentMatch #despliegue-busqueda .busqueda .boton-busqueda:hover {
+  background-image: url("AppDesign/SearchButton_Hover.png");
+  transition: none;
+}
+body .currentMatch .seccion {
   position: relative;
   text-align: center;
   width: 100%;
 }
-body .seccion.arriba {
-  height: 345px;
-  margin-top: 60px;
+body .currentMatch .seccion.arriba {
+  height: 304px;
 }
-body .seccion.abajo {
-  height: 387px;
+body .currentMatch .seccion.abajo {
+  height: 270px;
 }
-body .seccion .team {
-  display: table-cell;
-  vertical-align: middle;
+body .currentMatch .seccion .team.arriba {
+  margin-top: 100px;
 }
-body .seccion .team .summoner {
+body .currentMatch .seccion .team.abajo {
+  margin-top: 50px;
+}
+body .currentMatch .seccion .team .summoner {
   display: inline-block;
   height: 270px;
   margin-right: 35px;
   width: 133px;
 }
-body .seccion .team .summoner .champart-container {
+body .currentMatch .seccion .team .summoner .champart-container {
   height: 243px;
   width: 133px;
   background-color: #000;
   box-shadow: 0px 5px 10px #000;
   position: relative;
 }
-body .seccion .team .summoner .champart-container .champart {
+body .currentMatch .seccion .team .summoner .champart-container .champart {
   height: 243px;
   width: 133px;
 }
-body .seccion .team .summoner .champart-container .champart.azul {
+body .currentMatch .seccion .team .summoner .champart-container .champart.azul {
   box-shadow: 0px 0px 10px #084b59;
 }
-body .seccion .team .summoner .champart-container .champart.rojo {
+body .currentMatch .seccion .team .summoner .champart-container .champart.rojo {
   box-shadow: 0px 0px 10px #900;
 }
-body .seccion .team .summoner .champart-container .cortina {
+body .currentMatch .seccion .team .summoner .champart-container .cortina {
   background-color: #000;
   height: 243px;
   left: 0px;
@@ -234,14 +320,14 @@ body .seccion .team .summoner .champart-container .cortina {
   top: 0px;
   width: 133px;
 }
-body .seccion .team .summoner .champart-container .tier {
+body .currentMatch .seccion .team .summoner .champart-container .tier {
   height: 30px;
   left: 2px;
   position: absolute;
   top: 2px;
   width: 30px;
 }
-body .seccion .team .summoner .champart-container .tier-number {
+body .currentMatch .seccion .team .summoner .champart-container .tier-number {
   font-size: 13px;
   left: 32px;
   margin: 0px;
@@ -249,48 +335,91 @@ body .seccion .team .summoner .champart-container .tier-number {
   text-transform: uppercase;
   top: 10px;
 }
-body .seccion .team .summoner .champart-container .spell {
+body .currentMatch .seccion .team .summoner .champart-container .spell {
   border: 1px solid #990;
   height: 30px;
   position: absolute;
   width: 30px;
 }
-body .seccion .team .summoner .champart-container .spell.uno {
+body .currentMatch .seccion .team .summoner .champart-container .spell.uno {
   bottom: 10px;
   left: 10px;
 }
-body .seccion .team .summoner .champart-container .spell.dos {
+body .currentMatch .seccion .team .summoner .champart-container .spell.dos {
   bottom: 10px;
   left: 46px;
 }
-body .seccion .team .summoner .summoner-name {
+body .currentMatch .seccion .team .summoner .summoner-name {
   font-size: 15px;
   margin: 5px 0px 0px 0px;
   text-shadow: 0px 3px 5px #000;
 }
-body .seccion .bans-panel {
+body .currentMatch .seccion .bans-panel {
   position: absolute;
   right: 170px;
   text-align: center;
   width: 60px;
+  top: 8px;
 }
-body .seccion .bans-panel.arriba {
-  top: 42px;
-}
-body .seccion .bans-panel.abajo {
-  top: 62px;
-}
-body .seccion .bans-panel .ban-tittle {
+body .currentMatch .seccion .bans-panel .ban-tittle {
   font-weight: bold;
   margin-bottom: 5px;
   text-align: center;
   text-transform: uppercase;
 }
-body .seccion .bans-panel .ban {
+body .currentMatch .seccion .bans-panel .ban {
   border-radius: 50%;
   border: 2px solid #fff;
   height: 50px;
   margin-bottom: 5px;
   width: 50px;
   -webkit-filter: grayscale(80%);
+}
+@font-face {
+  font-family: 'Lato';
+  src: url("Fonts/Lato-Regular.ttf");
+}
+@-moz-keyframes breathing {
+  0% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+  50% {
+    box-shadow: 0px 0px 30px #084b59;
+  }
+  10% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+}
+@-webkit-keyframes breathing {
+  0% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+  50% {
+    box-shadow: 0px 0px 30px #084b59;
+  }
+  10% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+}
+@-o-keyframes breathing {
+  0% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+  50% {
+    box-shadow: 0px 0px 30px #084b59;
+  }
+  10% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+}
+@keyframes breathing {
+  0% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
+  50% {
+    box-shadow: 0px 0px 30px #084b59;
+  }
+  10% {
+    box-shadow: 0px 0px 0px #084b59;
+  }
 }

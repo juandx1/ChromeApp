@@ -13,7 +13,9 @@ body
 	background-repeat: no-repeat
 	color: white
 	font-family: 'Lato', sans-serif
+	height 799px
 	padding-top: 1px
+	position relative
 	width: 1280px
 	
 	.menu-toggle
@@ -59,61 +61,68 @@ body
 			z-index 500
 	
 	.startDiv
-		width: 1280px
+		display table
+		height 799px
 		text-align center
-		
-		.startImage
-			-webkit-animation-duration 4s
-			-webkit-animation-iteration-count infinite
-			-webkit-animation-name breathing
-			background-image url('AppDesign/StartImage.png')
-			border-radius 50%
-			height: 300px
-			margin 80px auto 40px auto
-			width: 300px
-			
-		.startText
-			font-size 30px
-			text-shadow 0px 5px 5px black
-			text-transform uppercase
-			
-		.startInputSumName
-			background transparent
-			border none
-			border-bottom 2px solid white
-			font-size 25px
-			outline none
-			text-align center
-			text-transform uppercase
-			width 400px
-			
-			&::-webkit-input-placeholder
-				text-align center
-				text-shadow 0px 3px 1px black
-		
-		.startButtonDiv
-			height 90px
+		width: 1280px
 
-			.startButton
-				background transparent
-				border 2px solid white
+		.startCell
+			display table-cell
+			vertical-align middle
+		
+			.startImage
+				-webkit-animation-duration 4s
+				-webkit-animation-iteration-count infinite
+				-webkit-animation-name breathing
+				background-image url('AppDesign/StartImage.png')
+				background-repeat no-repeat
 				border-radius 50%
-				box-shadow 0px 3px 5px black
-				font-size 20px
-				height 60px
-				margin-top: 20px
-				outline none
-				text-transform uppercase
-				transition box-shadow 0.4s ease 0s
-				width 60px
+				height: 300px
+				margin 0 auto
+				width: 300px
 				
-				&:hover
-					border 2px solid BordeBans
-					box-shadow 0px 0px 20px BordeChampionAzul
-					color BordeBans
+			.startText
+				font-size 30px
+				text-shadow 0px 5px 5px black
+				text-transform uppercase
+				
+			.startInputSumName
+				background transparent
+				border none
+				border-bottom 2px solid white
+				font-size 25px
+				outline none
+				text-align center
+				text-transform uppercase
+				width 400px
+				
+				&::-webkit-input-placeholder
+					text-align center
+					text-shadow 0px 3px 1px black
+			
+			.startButtonDiv
+				height 90px
+
+				.startButton
+					background transparent
+					border 2px solid white
+					border-radius 50%
+					box-shadow 0px 3px 5px black
+					font-size 20px
+					height 60px
+					margin-top: 20px
+					outline none
+					text-transform uppercase
+					transition box-shadow 0.4s ease 0s
+					width 60px
 					
-		#informationText
-			font-size 15px
+					&:hover
+						border 2px solid BordeBans
+						box-shadow 0px 0px 20px BordeChampionAzul
+						color BordeBans
+						
+			#informationText
+				font-size 15px
 			
 	.welcomeDiv
 		display table
@@ -132,6 +141,7 @@ body
 				border-radius 50%
 				height: 150px
 				width: 150px
+				border 2px solid Boxes
 				
 			.welcomeText
 				font-size 30px
@@ -414,7 +424,7 @@ body
 		box-shadow 0px 0px 0px BordeChampionAzul
 	}
 	50%{
-		box-shadow 0px 0px 30px BordeChampionAzul
+		box-shadow 0px 0px 50px BordeChampionAzul
 	}
 	10%{
 		box-shadow 0px 0px 0px BordeChampionAzul

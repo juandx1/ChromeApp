@@ -4,7 +4,7 @@ $(document).ready(function() {
 	chrome.storage.local.getBytesInUse(null, function(bytes){
 		if(bytes == 0){
 			$('.menu-toggle').addClass('desactivar');
-			$('.startDiv').show();
+			abrirVista('startDiv');
 			$('#startSumNameText').focus();
 		}else{
 			loadStorage();
@@ -29,7 +29,7 @@ function cargarSummonerView(summonerData, serverVersion){
 	$('.owner-name').text(summonerData.nombreInvocador);
 	$('.welcomeText').text('hello '+summonerData.nombreInvocador);
 	$('.summoner-icon').removeClass('not-logged');
-	$('.welcomeDiv').show(1000);
+	$('.welcomeDiv').fadeIn(1000);
 }
 
 function iniciarSesion(summonerName){
@@ -40,9 +40,9 @@ function iniciarSesion(summonerName){
 		dataType: 'json'
 	})
 	.fail(function() {
-		$('#informationText').fadeTo(0,1);
 		if(summonerInfo.status == 400 || summonerInfo.status == 404){
-			$('#informationText').text('Summoner not found!').fadeTo(2000, 0);
+			$('#informationText').fadeIn(0);
+			$('#informationText').text('Summoner not found!').fadeOut(2000);
 		}
 	});
 
@@ -73,19 +73,19 @@ function cerrarTodasLasVistas(){
 
 function cerrarTodasLasVistasAnim(vista){
 	if(vista=='currentMatch'){
-		$('.startDiv').hide(500);
-		$('.welcomeDiv').hide(500);
+		$('.startDiv').fadeOut(500);
+		$('.welcomeDiv').fadeOut(500);
 	}else if(vista=='startDiv'){
-		$('.currentMatch').hide(500);
-		$('.welcomeDiv').hide(500);
+		$('.currentMatch').fadeOut(500);
+		$('.welcomeDiv').fadeOut(500);
 	}else if(vista=='welcomeDiv'){
-		$('.currentMatch').hide(500);
-		$('.startDiv').hide(500);
+		$('.currentMatch').fadeOut(500);
+		$('.startDiv').fadeOut(500);
 	}
 }
 
 function abrirVista(vista){
-	$('.'+vista).delay(1000).show(1000);
+	$('.'+vista).fadeIn(1000);
 }
 
 function loadStorage(){
@@ -112,10 +112,9 @@ function cerrarSesion(){
 
 $('#registerSummoner').submit(function( event ) {
 	var summoner = $('#startSumNameText').val();
-	console.log(summoner);
-	$('#informationText').fadeTo(0,1);
 	if(summoner==''){
-		$('#informationText').text('Remember to fill the field!').fadeTo(3000, 0);
+		$('#informationText').fadeIn(0);
+		$('#informationText').text('Remember to fill the field!').fadeOut(3000);
 	}else{
 		iniciarSesion(summoner);
 	}

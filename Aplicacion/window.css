@@ -6,9 +6,7 @@ body {
   background-repeat: no-repeat;
   color: #fff;
   font-family: 'Lato', sans-serif;
-  height: 799px;
   padding-top: 1px;
-  position: relative;
   width: 1280px;
 }
 body .menu-toggle {
@@ -54,32 +52,25 @@ body .esquina.derecha {
   z-index: 500;
 }
 body .startDiv {
-  display: table;
-  height: 799px;
-  text-align: center;
   width: 1280px;
+  text-align: center;
 }
-body .startDiv .startCell {
-  display: table-cell;
-  vertical-align: middle;
-}
-body .startDiv .startCell .startImage {
+body .startDiv .startImage {
   -webkit-animation-duration: 4s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-name: breathing;
   background-image: url("AppDesign/StartImage.png");
-  background-repeat: no-repeat;
   border-radius: 50%;
   height: 300px;
-  margin: 0 auto;
+  margin: 80px auto 40px auto;
   width: 300px;
 }
-body .startDiv .startCell .startText {
+body .startDiv .startText {
   font-size: 30px;
   text-shadow: 0px 5px 5px #000;
   text-transform: uppercase;
 }
-body .startDiv .startCell .startInputSumName {
+body .startDiv .startInputSumName {
   background: transparent;
   border: none;
   border-bottom: 2px solid #fff;
@@ -89,14 +80,14 @@ body .startDiv .startCell .startInputSumName {
   text-transform: uppercase;
   width: 400px;
 }
-body .startDiv .startCell .startInputSumName::-webkit-input-placeholder {
+body .startDiv .startInputSumName::-webkit-input-placeholder {
   text-align: center;
   text-shadow: 0px 3px 1px #000;
 }
-body .startDiv .startCell .startButtonDiv {
+body .startDiv .startButtonDiv {
   height: 90px;
 }
-body .startDiv .startCell .startButtonDiv .startButton {
+body .startDiv .startButtonDiv .startButton {
   background: transparent;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -109,12 +100,12 @@ body .startDiv .startCell .startButtonDiv .startButton {
   transition: box-shadow 0.4s ease 0s;
   width: 60px;
 }
-body .startDiv .startCell .startButtonDiv .startButton:hover {
+body .startDiv .startButtonDiv .startButton:hover {
   border: 2px solid #1c93ae;
   box-shadow: 0px 0px 20px #084b59;
   color: #1c93ae;
 }
-body .startDiv .startCell #informationText {
+body .startDiv #informationText {
   font-size: 15px;
 }
 body .welcomeDiv {
@@ -134,7 +125,6 @@ body .welcomeDiv .welcomeCell .welcomeImg {
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  border: 2px solid #e3b74d;
 }
 body .welcomeDiv .welcomeCell .welcomeText {
   font-size: 30px;
@@ -412,7 +402,7 @@ body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
     box-shadow: 0px 0px 0px #084b59;
   }
   50% {
-    box-shadow: 0px 0px 50px #084b59;
+    box-shadow: 0px 0px 30px #084b59;
   }
   10% {
     box-shadow: 0px 0px 0px #084b59;
@@ -423,7 +413,7 @@ body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
     box-shadow: 0px 0px 0px #084b59;
   }
   50% {
-    box-shadow: 0px 0px 50px #084b59;
+    box-shadow: 0px 0px 30px #084b59;
   }
   10% {
     box-shadow: 0px 0px 0px #084b59;
@@ -434,7 +424,7 @@ body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
     box-shadow: 0px 0px 0px #084b59;
   }
   50% {
-    box-shadow: 0px 0px 50px #084b59;
+    box-shadow: 0px 0px 30px #084b59;
   }
   10% {
     box-shadow: 0px 0px 0px #084b59;
@@ -445,7 +435,7 @@ body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
     box-shadow: 0px 0px 0px #084b59;
   }
   50% {
-    box-shadow: 0px 0px 50px #084b59;
+    box-shadow: 0px 0px 30px #084b59;
   }
   10% {
     box-shadow: 0px 0px 0px #084b59;

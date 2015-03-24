@@ -1,28 +1,18 @@
-$(document).ready(function($) {
-	$('.currentMatch').hide();
+$(document).ready(function() {
+	cerrarTodasLasVistas();
+
+	chrome.storage.local.getBytesInUse(null, function(bytes){
+		if(bytes == 0){
+			$('.menu-toggle').addClass('desactivar');
+			$('.startDiv').show();
+			$('#startSumNameText').focus();
+		}else{
+			loadStorage();
+		}
+	});
 });
 
-function buscarPartida(summoner) {
-	$.ajax({
-		url: 'https://lan.api.pvp.net/api/lol/lan/v1.4/summoner/by-name/juandx1?api_key=c23d24ee-d074-4000-a7f0-4711741570c4',
-		type: 'GET',
-		dataType: 'json'
-	})
-	.done(function(data) {
-		var data1 = data[summoner];
-		$('#id').append(" id - " + data1.id);
-
-	})
-	.fail(function() {
-		console.log("error");
-	})
-	.always(function() {
-		console.log("complete");
-	});
-
-};
-
-function actualizarDatosInvocador(summonerData, serverVersion){
+function cargarSummonerView(summonerData, serverVersion){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', 'http://ddragon.leagueoflegends.com/cdn/'+serverVersion+'/img/profileicon/'+summonerData.idIcono+'.png', true);
 	xhr.responseType = 'blob';
@@ -30,13 +20,19 @@ function actualizarDatosInvocador(summonerData, serverVersion){
   		$('.summoner-icon').attr({
   			src: window.URL.createObjectURL(this.response)
   		});
+		$('.welcomeImg').attr('src', window.URL.createObjectURL(this.response));
 	};
 	xhr.send();
 
+	cerrarTodasLasVistasAnim('welcomeDiv');
+	$('.menu-toggle').removeClass('desactivar');
 	$('.owner-name').text(summonerData.nombreInvocador);
+	$('.welcomeText').text('hello '+summonerData.nombreInvocador);
+	$('.summoner-icon').removeClass('not-logged');
+	$('.welcomeDiv').show(1000);
 }
 
-function obtenerInformacionPersonal(summonerName){
+function iniciarSesion(summonerName){
 
 	var summonerInfo=$.ajax({
 		url: 'https://lan.api.pvp.net/api/lol/lan/v1.4/summoner/by-name/'+summonerName+'?api_key=33b1e8e7-58e3-4e15-a8bb-157f50a879a5',
@@ -45,35 +41,98 @@ function obtenerInformacionPersonal(summonerName){
 	})
 	.fail(function() {
 		$('#informationText').fadeTo(0,1);
-		if(summonerInfo.status == 400){
+		if(summonerInfo.status == 400 || summonerInfo.status == 404){
 			$('#informationText').text('Summoner not found!').fadeTo(2000, 0);
 		}
 	});
-	
 
 	var version=$.ajax({
 		url: 'https://global.api.pvp.net/api/lol/static-data/lan/v1.2/versions?api_key=33b1e8e7-58e3-4e15-a8bb-157f50a879a5',
 		type: 'GET',
 		dataType: 'json',
 	});
+
 	$.when(summonerInfo, version).done(function(result1,result2){
 		var data1 = result1[0][summonerName.replace(" ","").toLowerCase().trim()];
         var infoInvocador = {'nombreInvocador':data1.name,'idInvocador':data1.id,'idIcono':data1.profileIconId};
         var ver = result2[0][0];
-        actualizarDatosInvocador(infoInvocador,ver);
-        $('.summoner-icon').removeClass('not-logged')
-        return true;
+
+        cargarSummonerView(infoInvocador,ver);
+
+        chrome.storage.local.set({'sumInfo':infoInvocador,'svVersion': ver}, function() {
+        	console.log('Saved');
+        });
 	});
 }
 
+function cerrarTodasLasVistas(){
+	$('.currentMatch').hide();
+	$('.startDiv').hide();
+	$('.welcomeDiv').hide();
+}
+
+function cerrarTodasLasVistasAnim(vista){
+	if(vista=='currentMatch'){
+		$('.startDiv').hide(500);
+		$('.welcomeDiv').hide(500);
+	}else if(vista=='startDiv'){
+		$('.currentMatch').hide(500);
+		$('.welcomeDiv').hide(500);
+	}else if(vista=='welcomeDiv'){
+		$('.currentMatch').hide(500);
+		$('.startDiv').hide(500);
+	}
+}
+
+function abrirVista(vista){
+	$('.'+vista).delay(1000).show(1000);
+}
+
+function loadStorage(){
+	chrome.storage.local.get(function(info){
+		cargarSummonerView(info.sumInfo,info.svVersion);
+		console.log('logged in');
+	});
+}
+
+function cerrarSesion(){
+	chrome.storage.local.clear();
+	$('#startSumNameText').val('');
+	$('.owner-name').text('Not Logged');
+	$('.summoner-icon').addClass('not-logged').attr('src', 'AppDesign/Perfil.png');
+	$('#informationText').text('');
+	$('#menu').removeClass('active');
+	$('.menu-toggle').addClass('desactivar');
+	cerrarTodasLasVistasAnim('startDiv');
+	abrirVista('startDiv');
+}
+
+
+//Acciones de botones
+
 $('#registerSummoner').submit(function( event ) {
-	obtenerInformacionPersonal($('#startSumNameText').val());
-	// $('.startDiv').hide('slow/500/fast');
-	// $('.currentMatch').show('slow/500/fast');
-	// $('#menu').addClass('active');
+	var summoner = $('#startSumNameText').val();
+	console.log(summoner);
+	$('#informationText').fadeTo(0,1);
+	if(summoner==''){
+		$('#informationText').text('Remember to fill the field!').fadeTo(3000, 0);
+	}else{
+		iniciarSesion(summoner);
+	}
 });
 
-$( "#profile" ).click(function() {
-	$('.startDiv').hide('slow/500/fast');
-	$('.currentMatch').show('slow/500/fast');
+$( "#findLiveGame" ).click(function() {
+	cerrarTodasLasVistasAnim('currentMatch');
+	abrirVista('currentMatch');
+	$('#menu').removeClass('active');
+});
+
+$('#home').click(function() {
+	cerrarTodasLasVistasAnim('welcomeDiv');
+	abrirVista('welcomeDiv');
+	$('#menu').removeClass('active');
+});
+
+$('#logOut').click(function() {
+	cerrarSesion();
 });

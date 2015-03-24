@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "My First App",
+  "name": "League Central",
   "version": "1",
   "minimum_chrome_version": "23",
   "icons": {
@@ -10,8 +10,7 @@
   "permissions": [
   "storage",
   "http://ddragon.leagueoflegends.com/",
-  "https://lan.api.pvp.net/",
-  "http://fonts.googleapis.com/"
+  "https://lan.api.pvp.net/"
   ],
   "app": {
     "background": {

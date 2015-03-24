@@ -9,6 +9,27 @@ body {
   padding-top: 1px;
   width: 1280px;
 }
+body .menu-toggle {
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  text-decoration: none;
+  text-shadow: 0px 3px 5px #000;
+  text-transform: uppercase;
+}
+body .menu-toggle.uno {
+  font-size: 20px;
+  left: 54px;
+  top: 15px;
+}
+body .menu-toggle.dos {
+  font-size: 15px;
+  right: 7px;
+}
+body .menu-toggle.desactivar {
+  color: #808080;
+  pointer-events: none;
+}
 body .esquina {
   bottom: 0px;
   position: absolute;
@@ -34,19 +55,15 @@ body .startDiv {
   width: 1280px;
   text-align: center;
 }
-body .startDiv.ocultar {
-  position: absolute;
-  visibility: hidden;
-}
 body .startDiv .startImage {
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: breathing;
   background-image: url("AppDesign/StartImage.png");
   border-radius: 50%;
   height: 300px;
   margin: 80px auto 40px auto;
   width: 300px;
-  -webkit-animation-name: breathing;
-  -webkit-animation-duration: 4s;
-  -webkit-animation-iteration-count: infinite;
 }
 body .startDiv .startText {
   font-size: 30px;
@@ -80,8 +97,8 @@ body .startDiv .startButtonDiv .startButton {
   margin-top: 20px;
   outline: none;
   text-transform: uppercase;
-  width: 60px;
   transition: box-shadow 0.4s ease 0s;
+  width: 60px;
 }
 body .startDiv .startButtonDiv .startButton:hover {
   border: 2px solid #1c93ae;
@@ -91,102 +108,31 @@ body .startDiv .startButtonDiv .startButton:hover {
 body .startDiv #informationText {
   font-size: 15px;
 }
-body #menu {
-  position: absolute;
-  top: 0px;
-}
-body #menu.active {
-  left: 230px;
-}
-body #menu.active #sidebar-wrapper {
-  left: 230px;
-  transition: all 0.4s ease 0s;
-  width: 230px;
-}
-body #sidebar-wrapper {
-  background-image: url("AppDesign/Menu.png");
-  background-repeat: no-repeat;
-  box-shadow: 5px 0px 20px #000;
-  height: 100%;
-  left: 0px;
-  margin-left: -230px;
-  position: fixed;
-  transition: all 0.4s ease 0s;
-  width: 230px;
-  z-index: 1000;
-}
-body #sidebar-wrapper .sidebar-nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 230px;
-}
-body #sidebar-wrapper .sidebar-nav ul li {
-  font-size: 18px;
-  line-height: 40px;
-  margin-left: -40px;
+body .welcomeDiv {
+  display: table;
+  height: 799px;
   text-align: center;
+  width: 1280px;
+}
+body .welcomeDiv .welcomeCell {
+  display: table-cell;
+  vertical-align: middle;
+}
+body .welcomeDiv .welcomeCell .welcomeImg {
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: breathing;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+body .welcomeDiv .welcomeCell .welcomeText {
+  font-size: 30px;
+  text-shadow: 0px 5px 5px #000;
   text-transform: uppercase;
-}
-body #sidebar-wrapper .sidebar-nav ul li a {
-  color: #fff;
-  display: block;
-  text-decoration: none;
-}
-body #sidebar-wrapper .sidebar-nav ul li a:hover {
-  background-color: rgba(255,255,255,0.2);
-}
-body #sidebar-wrapper .sidebar-nav>.sidebar-brand {
-  height: 50px;
-  position: relative;
-}
-body #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon {
-  height: 50px;
-  width: 50px;
-  border-right: 2px solid #e3b74d;
-  position: absolute;
-}
-body #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon.not-logged {
-  -webkit-filter: grayscale(100%);
-}
-body #sidebar-wrapper .sidebar-nav>.sidebar-brand .owner-name {
-  position: absolute;
-  left: 55px;
-  margin: 0px;
-  bottom: 0px;
-  font-size: 18px;
-}
-body #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
-  position: absolute;
-  left: 55px;
-  margin: 0px;
-  top: 0px;
-  font-size: 13px;
-}
-body .menu-toggle {
-  color: #fff;
-  font-weight: bold;
-  position: absolute;
-  text-decoration: none;
-  text-shadow: 0px 3px 5px #000;
-  text-transform: uppercase;
-}
-body .menu-toggle.uno {
-  font-size: 20px;
-  left: 54px;
-  top: 15px;
-}
-body .menu-toggle.dos {
-  font-size: 15px;
-  right: 7px;
 }
 body .currentMatch {
   height: 100%;
-}
-body .currentMatch.ocultar {
-  position: absolute;
-  visibility: hidden;
 }
 body .currentMatch .separador {
   position: absolute;
@@ -195,7 +141,6 @@ body .currentMatch .separador {
 body .currentMatch .game-info {
   bottom: 0px;
   font-size: 20px;
-  font-weight: bold;
   left: 135px;
   margin: 0px;
   position: absolute;
@@ -374,6 +319,79 @@ body .currentMatch .seccion .bans-panel .ban {
   margin-bottom: 5px;
   width: 50px;
   -webkit-filter: grayscale(80%);
+}
+body #menu {
+  position: absolute;
+  top: 0px;
+}
+body #menu.active {
+  left: 230px;
+}
+body #menu.active #sidebar-wrapper {
+  left: 230px;
+  transition: all 0.4s ease 0s;
+  width: 230px;
+}
+body #menu #sidebar-wrapper {
+  background-image: url("AppDesign/Menu.png");
+  background-repeat: no-repeat;
+  box-shadow: 5px 0px 20px #000;
+  height: 100%;
+  left: 0px;
+  margin-left: -230px;
+  position: fixed;
+  transition: all 0.4s ease 0s;
+  width: 230px;
+  z-index: 1000;
+}
+body #menu #sidebar-wrapper .sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 230px;
+}
+body #menu #sidebar-wrapper .sidebar-nav ul li {
+  font-size: 18px;
+  line-height: 40px;
+  margin-left: -40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+body #menu #sidebar-wrapper .sidebar-nav ul li a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+body #menu #sidebar-wrapper .sidebar-nav ul li a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand {
+  height: 50px;
+  position: relative;
+}
+body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon {
+  height: 50px;
+  width: 50px;
+  border-right: 2px solid #e3b74d;
+  position: absolute;
+}
+body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .summoner-icon.not-logged {
+  -webkit-filter: grayscale(100%);
+}
+body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .owner-name {
+  position: absolute;
+  left: 55px;
+  margin: 0px;
+  bottom: 0px;
+  font-size: 18px;
+}
+body #menu #sidebar-wrapper .sidebar-nav>.sidebar-brand .loggedAs {
+  position: absolute;
+  left: 55px;
+  margin: 0px;
+  top: 0px;
+  font-size: 13px;
 }
 @font-face {
   font-family: 'Lato';
